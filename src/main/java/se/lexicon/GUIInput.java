@@ -1,6 +1,8 @@
 package se.lexicon;
 import javax.swing.*;
-
+/**
+ * Just testing the Graphical user interface
+ */
 public class GUIInput {
     public static void main(String[] args) {
         double number1 = Double.parseDouble(JOptionPane.showInputDialog("Enter the first number:"));
