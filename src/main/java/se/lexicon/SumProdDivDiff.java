@@ -1,5 +1,7 @@
 package se.lexicon;
+
 import java.util.Scanner;
+
 public class SumProdDivDiff {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -9,7 +11,6 @@ public class SumProdDivDiff {
 
         System.out.print("Enter the second number: ");
         double num2 = scanner.nextDouble();
-
         scanner.close();
 
         double sum = num1 + num2;
