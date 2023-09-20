@@ -2,8 +2,6 @@ package se.lexicon;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GUICalculator {
 
@@ -33,37 +31,7 @@ public class GUICalculator {
         };
 
         for (String label : buttonLabels) {
-            JButton button = new JButton(label);
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String command = e.getActionCommand();
-
-                    if (command.equals("C")) {
-                        number1 = "";
-                        number2 = "";
-                        operator = "";
-                        displayField.setText("");
-                    } else if (command.matches("[0-9.]")) {
-                        if (operator.isEmpty()) {
-                            number1 += command;
-                        } else {
-                            number2 += command;
-                        }
-                        displayField.setText(displayField.getText() + command);
-                    } else if (command.matches("[+\\-*/]")) {
-                        if (!number1.isEmpty() && !number2.isEmpty()) {
-                            calculateResult();
-                        }
-                        operator = command;
-                        displayField.setText(displayField.getText() + operator);
-                    } else if (command.equals("=")) {
-                        calculateResult();
-                    } else if (command.equals("Q")) {
-                        System.exit(0);
-                    }
-                }
-            });
+            final JButton button = getjButton(label);
 
             panel.add(button);
         }
@@ -71,6 +39,38 @@ public class GUICalculator {
         frame.add(panel, BorderLayout.CENTER);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private static JButton getjButton(String label) {
+        JButton button = new JButton(label);
+        button.addActionListener(e -> {
+            String command = e.getActionCommand();
+
+            if (command.equals("C")) {
+                number1 = "";
+                number2 = "";
+                operator = "";
+                displayField.setText("");
+            } else if (command.matches("[0-9.]")) {
+                if (operator.isEmpty()) {
+                    number1 += command;
+                } else {
+                    number2 += command;
+                }
+                displayField.setText(displayField.getText() + command);
+            } else if (command.matches("[+\\-*/]")) {
+                if (!number1.isEmpty() && !number2.isEmpty()) {
+                    calculateResult();
+                }
+                operator = command;
+                displayField.setText(displayField.getText() + operator);
+            } else if (command.equals("=")) {
+                calculateResult();
+            } else if (command.equals("Q")) {
+                System.exit(0);
+            }
+        });
+        return button;
     }
 
     private static void calculateResult() {
