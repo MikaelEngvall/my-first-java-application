@@ -1,22 +1,28 @@
 package se.lexicon;
+
 import java.util.Scanner;
+
 public class convertSecondsToHoursMinutesSeconds {
-    static int hours;  /* Why does it have to be static?? */
-    static int minutes; /* Why static?? */
-    static int secondsLeft; /* Why static?? */
-    static int rest; /* Why static?? */
+    static int days;
+    static int hours;
+    static int minutes;
+    static int rest;
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter number of seconds: ");
         double seconds = scanner.nextDouble();
+        days = (int) (seconds / 86400);
+        rest = (int) (seconds % 86400);
+        hours = rest / 3600;
+        rest = (int) (seconds % 3600);
+        System.out.println(rest);
+        minutes = rest / 60;
+        rest = (int) (seconds % 60);
 
-        hours = (int) (seconds/3600);
-        secondsLeft = (int) (seconds - (hours*3600)); /* Seconds left after have counted the hours */
-        minutes = secondsLeft/60;
-        rest = secondsLeft - (minutes*60); /* The remaining seconds after have counted the minutes */
-
-        System.out.print(seconds + " seconds is " + hours + " hour(s) " + minutes + " minute(s) " + rest + " second(s)");
+        System.out.print(seconds + " seconds is " + days + " days " + hours + " hour(s) " + minutes + " minute(s) " + rest + " second(s)");
 
 
     }
