@@ -9,6 +9,8 @@ public class GUIInput {
         double number2 = Double.parseDouble(JOptionPane.showInputDialog("Enter the second number:"));
         double diff = number1-number2;
         double sum = number1+number2;
-        JOptionPane.showMessageDialog(null, "Product: " + number1*number2 + "\nDivision: " + number1/number2 + "\nSum: " + sum + "\nDifference: " + diff);
+        double prod = number1*number2;
+        double quota = number1/number2;
+        JOptionPane.showMessageDialog(null, "Product: " + prod + "\nDivision: " + quota + "\nSum: " + sum + "\nDifference: " + diff);
     }
 }
